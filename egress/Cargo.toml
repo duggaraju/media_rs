@@ -1,0 +1,37 @@
+[package]
+name = "jitencoder"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+hyper = { version = "0.14", features = ["full"] }
+tokio = { version = "1", features = ["full"] }
+tokio-util = "0.7"
+kube = { version = "0.86.0", features = ["runtime", "derive"] }
+k8s-openapi = { version = "0.20.0", features = ["v1_25"] }
+axum = "=0.6.20"
+hls_m3u8 = "0.4"
+azure_core = "0.15"
+azure_storage = "0.15"
+azure_storage_blobs = "0.15"
+config = "0.13"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+futures = "0.3.28"
+bytes="1.2"
+env_logger = "0.10"
+log = "0.4"
+tower-http = { version = "0.4", features= ["full"] }
+anyhow = "1.0"
+time = "0.3"
+uuid = "1.2"
+azure_identity = "0.15.0"
+async-trait = "0.1.73"
+storage = { path= "../storage" }
+
+[target.'cfg(unix)'.dependencies]
+tokio-pipe = "0.2"
+

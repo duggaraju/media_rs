@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manifest
+  labels:
+    app: manifest-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: manifest
+  template:
+    metadata:
+      labels:
+        app: manifest-deployment
+        service: manifest
+    spec:
+      tolerations:
+        - key: type
+          value: frontend
+          effect: NoSchedule
+      serviceAccountName: control-plane
+      containers:
+        - name: manifest
+          image: jitencoder
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: jit__pod_address
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          envFrom:
+            - configMapRef:
+                name: manifest-config

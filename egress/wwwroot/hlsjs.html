@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Azure Media HLSJS Player</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:;">
+
+    <!-- Shaka public builds.   
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>   
+
+    <!-- Your application source: -->
+    <script src="hlsjs.js"></script>
+
+    <style>
+
+    .content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .row {
+        margin-top: 10px;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    textarea {
+        width: 500px;
+        overflow-y: scroll;
+    }
+
+    </style>
+</head>
+<body>
+    <h2>HLSJS Reference player</h2>
+    <div id="clock"></div>
+    <div class="row">
+        <label>Select video to upload (No special characters in name)</label>
+        <input type="file" accept="video/mp4" id="file" name="file">
+        <button id="submit" type="submit">Upload</button>
+    </div>
+    <div class="row">
+        <div class="content">
+            <div >
+                <video width="850" height="480" controls muted id="camera" autoplay playsinline > </video>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label for="url">Asset URL:</label>
+        <input id="url" list="urls" size="100" autocomplete="off" placeholder="Select from dropdown or enter URL https://.../content.ism" >
+        </input>
+        <datalist id="urls">
+            <option value="/input04/BigBuckBunny_1080p_10min.mp4.m3u8">JIT Big Buck Bunny</option>
+            <option value="/input04/BigBuckBunny_4K_10min.mp4.m3u8">JIT 4K Big Buck Bunny</option>
+            <option value="/input02/SeriesS_InternalStorage_StreamSSDOn.mp4.m3u8">JIT xbox clip</option>
+            <option value="/84499e98-b4b9-46e3-aeee-255db29edd69/SeriesS_InternalStorage_StreamSSDOn.mp4.m3u8">Upload test</option>
+        </datalist>
+        <button onclick="joinLive()">Play</button>
+    </div>
+    <footer class="row">
+        <p>© Microsoft Corporation 2022</p>
+    </footer>
+</body>
+</html>

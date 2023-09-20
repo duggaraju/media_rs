@@ -1,0 +1,9 @@
+[workspace]
+resolver="2"
+members = [
+    "storage",
+    "storage_proxy",
+    "ingress",
+#    "egress",
+    "encoder"
+]

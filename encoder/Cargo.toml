@@ -1,0 +1,24 @@
+[package]
+name = "encoder"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.75"
+async-trait = "0.1.73"
+azure_identity = "0.15.0"
+azure_storage_blobs = "0.15.0"
+env_logger = "0.10.0"
+ffmpeg-cli = "0.1.0"
+ffprobe = "0.3.3"
+futures = "0.3.28"
+log = "0.4.20"
+tempfile = "3.8.0"
+tokio = { version = "1.32.0", features = [ "full" ] }
+tokio-util = "0.7.8"
+url = "2.4.1"
+
+[target.'cfg(unix)'.dependencies]
+unix-named-pipe = "0.2.0"
